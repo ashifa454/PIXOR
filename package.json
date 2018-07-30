@@ -1,0 +1,29 @@
+{
+  "name": "pixorapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "find ./node_modules/* -mtime +10950 -exec touch {} \\;"
+  },
+  "author": "asif",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "cheerio": "^1.0.0-rc.2",
+    "cloudscraper": "^1.5.0",
+    "color-logs": "^0.6.1",
+    "cors": "^2.8.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "firebase": "^5.3.0",
+    "firebase-admin": "^5.13.1",
+    "mongoose": "^5.2.5",
+    "nodemailer": "^4.6.7",
+    "pm2": "^3.0.2",
+    "request": "^2.87.0"
+  }
+}

@@ -1,0 +1,38 @@
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+<header id="siri-container" class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+</header>
+    <div class="mdl-card mdl-cell mdl-cell--8-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+      <div class="mdl-card__title">
+      <div class="mdl-typography--display-1 mdl-typography--text-center">Login to Continue</div>
+      </div>
+      <div class="mdl-card__supporting-text">
+<form method="POST" action={{route('login')}}>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="emailId" name="email" placeholder="johndoe@gmail.com" required>
+    <label class="mdl-textfield__label" for="emaidId">Registered Email Address.</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="password" id="sample3" name="password" placeholder="Secret Password" required>
+    <label class="mdl-textfield__label" for="sample3">Password</label>
+  </div>
+  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+  <input type="checkbox" id="checkbox-1" name="remember" class="mdl-checkbox__input" checked>
+  <span class="mdl-checkbox__label">Remember Me</span>
+</label>
+      </div>
+      <div class="mdl-card__actions">
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="playBtn">
+        Login
+      </button>
+      <a href="/forgetPassword" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+        Forget Password
+      </a>  
+    </div>
+</form>
+    <div class="mdl-card__menu">
+    <a href="/signup" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary">
+        Create Account
+    </a>
+    </div>
+    </div>
+</section>

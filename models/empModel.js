@@ -1,0 +1,70 @@
+const mongoose=require('mongoose');
+var bcrypt=require('bcrypt');
+const empSchema=mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
+    }
+});
+const empModel=module.exports=mongoose.model('empSchema',empSchema);
+module.exports.addUser=(UserObj,callback)=>{
+    empModel.getUserByCondition({email:UserObj.email},(err,result)=>{
+        if(err){
+            callback(err,null);
+        }
+        else if(result.length<1){
+            bcrypt.genSalt(10,(err,salt)=>{
+                bcrypt.hash(UserObj.password,salt,(err,result)=>{
+                    UserObj.password=result;
+                    UserObj.save(callback);
+                })
+            })
+        }else{
+            callback(null,"UAE");
+        }
+    })   
+}
+module.exports.getUser=(UserId,callback)=>{
+    empModel.findOne({_id:id},callback);
+}
+module.exports.getUserByCondition=(condition,callback)=>{
+    empModel.find(condition,callback);
+}
+module.exports.getUsers=(callback)=>{
+    empModel.find({},callback);
+}
+module.exports.deleteUser=(UserId,callback)=>{
+    empModel.findOneAndRemove({_id:UserId},callback);
+}
+module.exports.authentication=(UserObj,callback)=>{
+    empModel.findOne({email:UserObj.email},(err,result)=>{
+        if(err){
+            callback(err,null);
+        }else if(result){
+            bcrypt.compare(UserObj.password,result.password,(err,res)=>{
+                if(res){
+                    callback(err,{
+                        name:result.name,
+                        isAdmin:result.isAdmin
+                    });                    
+                }else{
+                    callback('PNE',res);                    
+                }
+            });
+        }else{  
+            callback('UNE',null);
+        }
+    })
+}
